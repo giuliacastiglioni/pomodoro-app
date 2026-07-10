@@ -3,7 +3,6 @@ import time
 
 import streamlit as st
 import streamlit.components.v1 as components
-from streamlit_autorefresh import st_autorefresh
 
 from themes import THEMES, TEAMS, QUIZ, DEFAULT_SETTINGS
 from avatars import F1_AVATARS, CALCIO_AVATARS, BASKET_AVATARS, TENNIS_AVATARS
@@ -13,7 +12,7 @@ from card_utils import generate_recap_card
 from svg_scenes import render_scene
 import stats as stats_mod
 
-st.set_page_config(page_title="Pomodoro", page_icon="⏱️", layout="centered")
+st.set_page_config(page_title="Pomodoro Tematico", page_icon="⏱️", layout="centered")
 
 # ---------------------------------------------------------------------------
 # Stato iniziale
@@ -429,9 +428,9 @@ def handle_phase_end():
         st.session_state.quiz_question = None
 
 
-with tab_timer:
+@st.fragment(run_every=1)
+def _render_timer_tab():
     if st.session_state.phase != "idle" and st.session_state.phase_end:
-        st_autorefresh(interval=1000, key="timer_refresh")
         remaining = st.session_state.phase_end - time.time()
         if remaining <= 0:
             handle_phase_end()
@@ -599,6 +598,10 @@ with tab_timer:
         if st.button("Ok, continua"):
             st.session_state.show_recap = False
             st.rerun()
+
+
+with tab_timer:
+    _render_timer_tab()
 
 # ---------------------------------------------------------------------------
 # Tab Album: curiosità sbloccate finora
