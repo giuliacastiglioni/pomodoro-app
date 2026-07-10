@@ -12,7 +12,7 @@ from card_utils import generate_recap_card
 from svg_scenes import render_scene
 import stats as stats_mod
 
-st.set_page_config(page_title="Pomodoro Tematico", page_icon="⏱️", layout="centered")
+st.set_page_config(page_title="Pomodoro", page_icon="⏱️", layout="centered")
 
 # ---------------------------------------------------------------------------
 # Stato iniziale
