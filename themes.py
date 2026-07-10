@@ -49,7 +49,7 @@ THEMES = {
         "default_team": "inter",
     },
     "basket": {
-        "label": "🏀 Paige Bueckers / WNBA",
+        "label": "🏀 WNBA",
         "primary": "#FF6B00",      # arancio basket
         "secondary": "#1D1160",    # viola WNBA
         "accent": "#FFFFFF",
